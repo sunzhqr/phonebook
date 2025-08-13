@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "Phonebook API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "2d6a4f4a-aaaa-bbbb-cccc-000000000001"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/healthz"
+      }
+    },
+    {
+      "name": "Create Contact",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"first_name\": \"Sanzhar\",\n  \"last_name\": \"Sanzharov\",\n  \"company\": \"Forte\",\n  \"phones\": [\n    {\n      \"label\": \"work\",\n      \"phone_raw\": \"8 (701) 123-45-67\",\n      \"is_primary\": true\n    },\n    {\n      \"label\": \"home\",\n      \"phone_raw\": \"+77021234567\",\n      \"is_primary\": false\n    }\n  ]\n}"
+        },
+        "url": "http://localhost:8080/api/v1/contacts"
+      }
+    },
+    {
+      "name": "List Contacts (keyset)",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/v1/contacts?limit=10"
+      }
+    },
+    {
+      "name": "Search by name",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/v1/contacts/search?q=Sanzhar"
+      }
+    },
+    {
+      "name": "Search by phone",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/v1/contacts/search?q=+7701"
+      }
+    },
+    {
+      "name": "Get Contact by ID",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/v1/contacts/1"
+      }
+    },
+    {
+      "name": "Update Contact",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"company\": \"ForteBank\"\n \n}"
+        },
+        "url": "http://localhost:8080/api/v1/contacts/1"
+      }
+    },
+    {
+      "name": "Delete Contact",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:8080/api/v1/contacts/1"
+      }
+    }
+  ]
+}
